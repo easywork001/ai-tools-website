@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册 - AI工具集</title>
+    <meta name="description" content="注册AI工具集账户，享受更多个性化服务">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="register.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>AI工具集</h1>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#apps">AI应用集</a></li>
+                <li><a href="index.html#news">每日AI快讯</a></li>
+                <li><a href="index.html#blog">文章博客</a></li>
+                <li><a href="login.html">登录</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 注册主体内容 -->
+    <main class="register-main">
+        <div class="register-container">
+            <!-- 左侧信息区域 -->
+            <div class="register-info">
+                <div class="info-content">
+                    <h2>加入AI工具集</h2>
+                    <p class="info-subtitle">发现最新最全的AI工具，提升工作效率</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">🔖</div>
+                            <div class="feature-text">
+                                <h3>个性化收藏</h3>
+                                <p>收藏喜欢的AI工具，随时快速访问</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-text">
+                                <h3>使用统计</h3>
+                                <p>查看工具使用记录，优化工作流程</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔔</div>
+                            <div class="feature-text">
+                                <h3>最新资讯</h3>
+                                <p>第一时间获取AI行业动态和新工具推荐</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">👥</div>
+                            <div class="feature-text">
+                                <h3>社区交流</h3>
+                                <p>与AI爱好者交流经验，分享使用心得</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">AI工具</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50万+</span>
+                            <span class="stat-label">注册用户</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100万+</span>
+                            <span class="stat-label">月访问量</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧注册表单 -->
+            <div class="register-form-container">
+                <div class="form-header">
+                    <h2>创建账户</h2>
+                    <p>已有账户？<a href="login.html" class="login-link">立即登录</a></p>
+                </div>
+
+                <form class="register-form" id="registerForm">
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" id="username" name="username" required>
+                        <span class="error-message" id="usernameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">邮箱地址</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">手机号码</label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <div class="password-input">
+                            <input type="password" id="password" name="password" required>
+                            <button type="button" class="password-toggle" id="passwordToggle">
+                                <span class="eye-icon">👁️</span>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <span class="strength-text">密码强度</span>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">确认密码</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <span class="error-message" id="confirmPasswordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="captcha">验证码</label>
+                        <div class="captcha-group">
+                            <input type="text" id="captcha" name="captcha" placeholder="请输入验证码" required>
+                            <canvas id="captchaCanvas" width="120" height="40"></canvas>
+                            <button type="button" id="refreshCaptcha" class="refresh-btn">🔄</button>
+                        </div>
+                        <span class="error-message" id="captchaError"></span>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreement" name="agreement" required>
+                            <span class="checkmark"></span>
+                            我已阅读并同意
+                            <a href="#" class="link">《用户协议》</a>
+                            和
+                            <a href="#" class="link">《隐私政策》</a>
+                        </label>
+                        <span class="error-message" id="agreementError"></span>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkmark"></span>
+                            订阅AI工具集周报，获取最新AI资讯
+                        </label>
+                    </div>
+
+                    <button type="submit" class="register-btn" id="registerBtn">
+                        <span class="btn-text">创建账户</span>
+                        <span class="btn-loading" style="display: none;">
+                            <span class="loading-spinner"></span>
+                            注册中...
+                        </span>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>或者使用以下方式注册</span>
+                </div>
+
+                <div class="social-register">
+                    <button class="social-btn wechat-btn">
+                        <span class="social-icon">💬</span>
+                        微信注册
+                    </button>
+                    <button class="social-btn qq-btn">
+                        <span class="social-icon">🐧</span>
+                        QQ注册
+                    </button>
+                    <button class="social-btn github-btn">
+                        <span class="social-icon">🐱</span>
+                        GitHub注册
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AI工具集</h3>
+                <p>专业的AI工具导航平台，助力您的AI之旅</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">联系我们</a>
+                <a href="#">用户协议</a>
+                <a href="#">隐私政策</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 AI工具集</p>
+        </div>
+    </footer>
+
+    <script src="register.js"></script>
+</body>
+</html> 

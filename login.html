@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录 - AI工具集</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="register.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>AI工具集</h1>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="register.html">注册</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="register-main">
+        <div class="register-container" style="grid-template-columns: 1fr; max-width: 500px;">
+            <div class="register-form-container">
+                <div class="form-header">
+                    <h2>欢迎回来</h2>
+                    <p>还没有账户？<a href="register.html" class="login-link">立即注册</a></p>
+                </div>
+
+                <form class="register-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">邮箱地址</label>
+                        <input type="email" id="loginEmail" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">密码</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="password-toggle">
+                                <span class="eye-icon">👁️</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span class="checkmark"></span>
+                            记住我
+                        </label>
+                        <a href="#" class="link" style="margin-left: auto;">忘记密码？</a>
+                    </div>
+
+                    <button type="submit" class="register-btn">
+                        <span class="btn-text">登录</span>
+                        <span class="btn-loading" style="display: none;">
+                            <span class="loading-spinner"></span>
+                            登录中...
+                        </span>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>或者使用以下方式登录</span>
+                </div>
+
+                <div class="social-register">
+                    <button class="social-btn wechat-btn">
+                        <span class="social-icon">💬</span>
+                        微信登录
+                    </button>
+                    <button class="social-btn qq-btn">
+                        <span class="social-icon">🐧</span>
+                        QQ登录
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AI工具集</h3>
+                <p>专业的AI工具导航平台，助力您的AI之旅</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 AI工具集</p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的登录功能
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email && password) {
+                const btnText = this.querySelector('.btn-text');
+                const btnLoading = this.querySelector('.btn-loading');
+                const submitBtn = this.querySelector('.register-btn');
+                
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'inline-flex';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('登录成功！');
+                    window.location.href = 'index.html';
+                }, 1500);
+            }
+        });
+
+        // 密码显示切换
+        document.querySelector('.password-toggle').addEventListener('click', function() {
+            const passwordInput = document.getElementById('loginPassword');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            const eyeIcon = this.querySelector('.eye-icon');
+            eyeIcon.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+    </script>
+</body>
+</html> 
