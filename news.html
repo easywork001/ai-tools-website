@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日AI快讯 - AI工具集</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="news.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>AI工具集</h1>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#apps">AI应用集</a></li>
+                <li><a href="news.html" class="active">每日AI快讯</a></li>
+                <li><a href="#blog">文章博客</a></li>
+                <li><a href="register.html" class="register-link">注册</a></li>
+                <li><a href="login.html" class="login-link">登录</a></li>
+                <li><a href="admin.html" class="admin-link">管理后台</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 快讯主体内容 -->
+    <main class="news-main">
+        <div class="news-container">
+            <!-- 快讯头部 -->
+            <div class="news-header">
+                <div class="news-title-section">
+                    <h1>📰 每日AI快讯热闻</h1>
+                    <p class="news-subtitle">AI工具集每个工作日实时更新AI行业的最新资讯、新闻、热点、融资、产品动态、爆料等，让你随时了解人工智能领域最新趋势、更新突破和热门大事件。</p>
+                </div>
+                
+                <div class="news-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="newsCount">0</span>
+                        <span class="stat-label">条快讯</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="updateTime">--</span>
+                        <span class="stat-label">最后更新</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 快讯筛选 -->
+            <div class="news-filters">
+                <div class="filter-group">
+                    <label>分类筛选：</label>
+                    <select id="categoryFilter">
+                        <option value="all">全部分类</option>
+                        <option value="产品发布">产品发布</option>
+                        <option value="技术突破">技术突破</option>
+                        <option value="融资动态">融资动态</option>
+                        <option value="行业动态">行业动态</option>
+                        <option value="政策法规">政策法规</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>时间筛选：</label>
+                    <select id="timeFilter">
+                        <option value="all">全部时间</option>
+                        <option value="today">今天</option>
+                        <option value="week">本周</option>
+                        <option value="month">本月</option>
+                    </select>
+                </div>
+                
+                <div class="search-group">
+                    <input type="text" id="newsSearch" placeholder="搜索快讯内容...">
+                    <button id="searchBtn">🔍</button>
+                </div>
+            </div>
+
+            <!-- 快讯列表 -->
+            <div class="news-content">
+                <div id="newsList" class="news-list">
+                    <!-- 快讯内容将通过JavaScript动态加载 -->
+                </div>
+                
+                <!-- 加载更多 -->
+                <div class="load-more-section">
+                    <button id="loadMoreBtn" class="load-more-btn">加载更多快讯</button>
+                </div>
+            </div>
+
+            <!-- 侧边栏 -->
+            <aside class="news-sidebar">
+                <!-- 热门标签 -->
+                <div class="sidebar-section">
+                    <h3>🏷️ 热门标签</h3>
+                    <div class="tags-cloud" id="tagsCloud">
+                        <!-- 标签云将通过JavaScript生成 -->
+                    </div>
+                </div>
+
+                <!-- 快讯统计 -->
+                <div class="sidebar-section">
+                    <h3>📊 本月统计</h3>
+                    <div class="month-stats">
+                        <div class="month-stat-item">
+                            <span class="stat-label">产品发布</span>
+                            <span class="stat-value" id="productCount">0</span>
+                        </div>
+                        <div class="month-stat-item">
+                            <span class="stat-label">技术突破</span>
+                            <span class="stat-value" id="techCount">0</span>
+                        </div>
+                        <div class="month-stat-item">
+                            <span class="stat-label">融资动态</span>
+                            <span class="stat-value" id="fundingCount">0</span>
+                        </div>
+                        <div class="month-stat-item">
+                            <span class="stat-label">行业动态</span>
+                            <span class="stat-value" id="industryCount">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 订阅提醒 -->
+                <div class="sidebar-section">
+                    <h3>🔔 订阅快讯</h3>
+                    <p>订阅AI工具集快讯，第一时间获取最新AI资讯</p>
+                    <form id="subscribeForm" class="subscribe-form">
+                        <input type="email" placeholder="输入邮箱地址" required>
+                        <button type="submit">订阅</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AI工具集</h3>
+                <p>专业的AI工具导航平台，助力您的AI之旅</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">联系我们</a>
+                <a href="#">用户协议</a>
+                <a href="#">隐私政策</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 AI工具集</p>
+        </div>
+    </footer>
+
+    <script src="news.js"></script>
+</body>
+</html> 

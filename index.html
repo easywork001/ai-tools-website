@@ -11,27 +11,40 @@
 <body>
     <!-- 顶部导航 -->
     <header class="header">
-        <nav class="nav-container">
+        <div class="header-left">
             <div class="logo">
                 <h1>AI工具集</h1>
+                <p>发现最新最好用的AI工具</p>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home">AI工具集</a></li>
-                <li><a href="#apps">AI应用集</a></li>
-                <li><a href="news.html">每日AI快讯</a></li>
-                <li><a href="#blog">文章博客</a></li>
-                <li><a href="#submit">提交AI工具</a></li>
-                <li><a href="register.html" class="register-link">注册</a></li>
-                <li><a href="login.html" class="login-link">登录</a></li>
-                <li><a href="admin.html" class="admin-link">管理后台</a></li>
-                <li><a href="#about">关于我们</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+        </div>
+        <div class="header-center">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="搜索AI工具...">
+                <button class="search-btn" onclick="searchTools()">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
-        </nav>
+        </div>
+        <div class="header-right">
+            <nav class="nav-links">
+                <a href="news.html" class="nav-link">
+                    <i class="fas fa-newspaper"></i>
+                    每日AI快讯
+                </a>
+                <a href="login.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    登录
+                </a>
+                <a href="register.html" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    注册
+                </a>
+                <a href="admin.html" class="nav-link admin-link" style="display: none;">
+                    <i class="fas fa-cog"></i>
+                    管理后台
+                </a>
+            </nav>
+        </div>
     </header>
 
     <!-- 主要内容区域 -->

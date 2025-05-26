@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员后台 - AI工具集</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+    <!-- 管理员登录界面 -->
+    <div id="loginSection" class="admin-login">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>🔐 管理员登录</h2>
+                <p>AI工具集后台管理系统</p>
+            </div>
+            <form id="adminLoginForm" class="login-form">
+                <div class="form-group">
+                    <label for="adminUsername">管理员账号</label>
+                    <input type="text" id="adminUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">密码</label>
+                    <input type="password" id="adminPassword" required>
+                </div>
+                <button type="submit" class="login-btn">登录</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 管理员后台界面 -->
+    <div id="adminPanel" class="admin-panel" style="display: none;">
+        <!-- 顶部导航 -->
+        <header class="admin-header">
+            <div class="admin-nav">
+                <h1>🤖 AI工具集管理后台</h1>
+                <div class="admin-user">
+                    <span id="adminUserName">管理员</span>
+                    <button id="logoutBtn" class="logout-btn">退出登录</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- 侧边栏 -->
+        <aside class="admin-sidebar">
+            <nav class="admin-menu">
+                <ul>
+                    <li><a href="#news" class="menu-item active" data-section="news">📰 每日AI快讯</a></li>
+                    <li><a href="#tools" class="menu-item" data-section="tools">🛠️ 工具管理</a></li>
+                    <li><a href="#users" class="menu-item" data-section="users">👥 用户管理</a></li>
+                    <li><a href="#settings" class="menu-item" data-section="settings">⚙️ 系统设置</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="admin-main">
+            <!-- 每日AI快讯管理 -->
+            <section id="newsSection" class="admin-section active">
+                <div class="section-header">
+                    <h2>📰 每日AI快讯管理</h2>
+                    <button id="addNewsBtn" class="add-btn">+ 添加快讯</button>
+                </div>
+
+                <!-- 快讯统计 -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <h3 id="totalNews">0</h3>
+                            <p>总快讯数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <h3 id="todayNews">0</h3>
+                            <p>今日发布</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👀</div>
+                        <div class="stat-info">
+                            <h3 id="totalViews">0</h3>
+                            <p>总浏览量</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快讯列表 -->
+                <div class="news-management">
+                    <div class="news-filters">
+                        <input type="text" id="newsSearch" placeholder="搜索快讯...">
+                        <select id="newsFilter">
+                            <option value="all">全部状态</option>
+                            <option value="published">已发布</option>
+                            <option value="draft">草稿</option>
+                        </select>
+                        <select id="dateFilter">
+                            <option value="all">全部时间</option>
+                            <option value="today">今天</option>
+                            <option value="week">本周</option>
+                            <option value="month">本月</option>
+                        </select>
+                    </div>
+
+                    <div class="news-list" id="newsList">
+                        <!-- 快讯列表将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 其他管理模块 -->
+            <section id="toolsSection" class="admin-section">
+                <h2>🛠️ 工具管理</h2>
+                <p>工具管理功能开发中...</p>
+            </section>
+
+            <section id="usersSection" class="admin-section">
+                <h2>👥 用户管理</h2>
+                <p>用户管理功能开发中...</p>
+            </section>
+
+            <section id="settingsSection" class="admin-section">
+                <h2>⚙️ 系统设置</h2>
+                <p>系统设置功能开发中...</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- 添加/编辑快讯模态框 -->
+    <div id="newsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">添加AI快讯</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="newsForm" class="news-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="newsTitle">标题 *</label>
+                        <input type="text" id="newsTitle" required maxlength="100">
+                        <span class="char-count">0/100</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="newsCategory">分类</label>
+                        <select id="newsCategory">
+                            <option value="产品发布">产品发布</option>
+                            <option value="技术突破">技术突破</option>
+                            <option value="融资动态">融资动态</option>
+                            <option value="行业动态">行业动态</option>
+                            <option value="政策法规">政策法规</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="newsSource">来源</label>
+                        <input type="text" id="newsSource" placeholder="如：OpenAI、谷歌等">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="newsContent">内容 *</label>
+                    <textarea id="newsContent" required rows="6" placeholder="请输入快讯内容..."></textarea>
+                    <div class="content-tools">
+                        <button type="button" class="tool-btn" onclick="insertText('**', '**')"><b>B</b></button>
+                        <button type="button" class="tool-btn" onclick="insertText('*', '*')"><i>I</i></button>
+                        <button type="button" class="tool-btn" onclick="insertText('[', '](url)')">🔗</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="newsUrl">相关链接</label>
+                    <input type="url" id="newsUrl" placeholder="https://example.com">
+                    <button type="button" id="extractFromUrl" class="extract-btn">从URL提取信息</button>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="newsTags">标签</label>
+                        <input type="text" id="newsTags" placeholder="用逗号分隔，如：AI,GPT,机器学习">
+                    </div>
+                    <div class="form-group">
+                        <label for="newsStatus">状态</label>
+                        <select id="newsStatus">
+                            <option value="published">立即发布</option>
+                            <option value="draft">保存为草稿</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="newsImage">配图URL（可选）</label>
+                    <input type="url" id="newsImage" placeholder="https://example.com/image.jpg">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="closeModal()">取消</button>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">发布快讯</span>
+                        <span class="btn-loading" style="display: none;">
+                            <span class="loading-spinner"></span>
+                            发布中...
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html> 
